@@ -80,7 +80,7 @@ begin
             Memo1.Lines.Add(CPF_LGPD('115.456.980-23'));
             Inc(i);
 
-            lbResult.Caption := lbResult.Caption + ' - ' + i.ToString;
+            lbResult.Caption := lbResult.Caption + i.ToString + ' - ';
 
             if i = 10 then
             begin
