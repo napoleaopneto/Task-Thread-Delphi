@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, System.Threading, Vcl.ComCtrls,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls,StrUtils;
 
 type
   TFrmPrincipal = class(TForm)
@@ -82,21 +82,11 @@ begin
 
             lbResult.Caption := lbResult.Caption + i.ToString + ' - ';
 
-            if i = 10 then
-            begin
-              lbMemoryLeack.Caption := 'Ainda';
-            end;
-             if i = 20 then
-            begin
-              lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Não';
-            end;
-             if i = 30 then
-            begin
-              lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Achamos';
-            end;
-             if i = 40 then
-            begin
-              lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Memory Leaks';
+            case AnsiIndexStr(UpperCase(i.ToString), ['10', '20','30','40']) of
+              0 : lbMemoryLeack.Caption := 'Ainda';
+              1 : lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Não';
+              2 : lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Achamos';
+              3 : lbMemoryLeack.Caption := lbMemoryLeack.Caption + ' Memory Leaks';
             end;
 
           end);
